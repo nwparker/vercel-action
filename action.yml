@@ -1,4 +1,4 @@
-name: 'Vercel Action'
+name: 'Vercel Action Pnpx'
 description: 'This action make a deployment with github actions instead of Vercel builder.'
 inputs:
   vercel-token:
