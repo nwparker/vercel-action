@@ -169,7 +169,7 @@ async function vercelDeploy(ref, commit) {
     args.push('--scope', vercelScope);
   }
 
-  await exec.exec('npx', [vercelBin, ...args], options);
+  await exec.exec('pnpx', [vercelBin, ...args], options);
 
   return myOutput;
 }
@@ -200,7 +200,7 @@ async function vercelInspect(deploymentUrl) {
     core.info('using scope');
     args.push('--scope', vercelScope);
   }
-  await exec.exec('npx', args, options);
+  await exec.exec('pnpx', args, options);
 
   const match = myError.match(/^\s+name\s+(.+)$/m);
   return match && match.length ? match[1] : null;
@@ -361,7 +361,7 @@ async function aliasDomainsToDeployment(deploymentUrl) {
   const promises = aliasDomains.map(domain =>
     retry(
       () =>
-        exec.exec('npx', [vercelBin, ...args, 'alias', deploymentUrl, domain]),
+        exec.exec('pnpx', [vercelBin, ...args, 'alias', deploymentUrl, domain]),
       2,
     ),
   );
